@@ -43,6 +43,6 @@ To get started, please install React, Express, Node, and PostgreSQL. You will ne
 
 ## CHD
 
-## ![CHD](https://i.imgur.com/LM8cl0s.png)
+## ![CHD](https://i.imgur.com/1NotqPS.png)
 
 ## Credits
