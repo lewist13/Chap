@@ -1,30 +1,35 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('channels', {
+    await queryInterface.createTable("channels", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       channel: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      server_id: {
-        type: Sequelize.INTEGER
+      serverId: {
+        type: Sequelize.INTEGER,
+        field: "server_id",
+        references: {
+          model: "server",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('channels');
-  }
+    await queryInterface.dropTable("channels");
+  },
 };
