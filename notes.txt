@@ -1,3 +1,5 @@
+// CHANNELS
+
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -67,4 +69,248 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   return Channel;
+};
+
+// USER
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  User.init(
+    {
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+      },
+      passwordDigest: {
+        type: DataTypes.STRING,
+        field: "password_digest",
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "User",
+      tableName: "users",
+    }
+  );
+  return User;
+};
+
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  User.init(
+    {
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+      },
+      passwordDigest: {
+        type: DataTypes.STRING,
+        field: "password_digest",
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "User",
+      tableName: "users",
+    }
+  );
+  return User;
+};
+
+// SERVER
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Server extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  server.init(
+    {
+      server_name: DataTypes.STRING,
+      userId: {
+        type: DataTypes.INTEGER,
+        field: "user_id",
+        references: {
+          model: "user",
+          key: "id",
+        },
+      },
+      ownerId: {
+        type: DataTypes.INTEGER,
+        field: "owner_id",
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "Server",
+      tableName: "servers",
+    }
+  );
+  return Server;
+};
+
+"use strict";
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("servers", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      server_name: {
+        type: Sequelize.STRING,
+      },
+      ownerId: {
+        type: Sequelize.INTEGER,
+        field: "owner_id",
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable("servers");
+  },
+};
+
+// ADMIN 
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class admin extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  admin.init(
+    {
+      userId: {
+        type: DataTypes.INTEGER,
+        field: "user_id",
+        references: {
+          model: "user",
+          key: "id",
+        },
+      },
+      serverId: {
+        type: DataTypes.INTEGER,
+        field: "server_id",
+        references: {
+          model: "server",
+          key: "id",
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "admin",
+      tableName: "admins",
+    }
+  );
+  return admin;
+};
+"use strict";
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("admins", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        field: "user_id",
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
+      serverId: {
+        type: Sequelize.INTEGER,
+        field: "server_id",
+        references: {
+          model: "servers",
+          key: "id",
+        },
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable("admins");
+  },
 };

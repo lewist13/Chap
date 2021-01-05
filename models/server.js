@@ -9,19 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Server.belongsTo(models.User, {
+        foreignKey: "owner_id",
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      });
     }
   }
-  server.init(
+  Server.init(
     {
-      server_name: DataTypes.STRING,
-      userId: {
-        type: DataTypes.INTEGER,
-        field: "user_id",
-        references: {
-          model: "user",
-          key: "id",
-        },
-      },
+      server: DataTypes.STRING,
       ownerId: {
         type: DataTypes.INTEGER,
         field: "owner_id",
