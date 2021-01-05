@@ -9,10 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Server.belongsTo(models.User, {
+      Server.belongsToMany(models.User, {
+        as: "b",
+        through: models.UserServer,
         foreignKey: "owner_id",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+      });
+
+      Server.hasMany(models.Channels, {
+        foreignKey: "channel_id",
+        onUpdate: "CASCADE",
+        onDelete: "DELETE",
       });
     }
   }

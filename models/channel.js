@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class UserServer extends Model {
+  class Channel extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,18 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Channels.belongsToMany(models.Users, {
+        as: "d",
+        through: models.UserMessagesPub,
+        foreignKey: "user_id",
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      });
     }
   }
-  UserServer.init(
+  Channel.init(
     {
-      user_id: {
-        type: DataTypes.INTEGER,
-        field: "user_id",
-        references: {
-          model: "users",
-          key: "id",
-        },
-      },
+      channel: DataTypes.STRING,
       server_id: {
         type: DataTypes.INTEGER,
         field: "server_id",
@@ -32,9 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "UserServer",
-      tableName: "userservers",
+      modelName: "Channel",
+      tableName: "channels",
     }
   );
-  return UserServer;
+  return Channel;
 };
