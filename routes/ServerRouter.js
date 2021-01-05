@@ -1,10 +1,7 @@
 const Router = require("express").Router();
 const controller = require("../controllers/ServerController");
-const { readToken, verifyJwt } = require("../middleware/index");
 
 // Routes
-Router.get("/session", readToken, verifyJwt, controller.SessionStatus);
-
 Router.get("/:server_id/", controller.GetServerById);
 // http://localhost:3001/api/servers/1
 

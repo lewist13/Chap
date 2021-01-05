@@ -1,8 +1,5 @@
 const Router = require("express").Router();
 const controller = require("../controllers/UserMessagesPubController");
-const { readToken, verifyJwt } = require("../middleware/index");
-
-Router.get("/session", readToken, verifyJwt, controller.SessionStatus);
 
 Router.get("/all", controller.GetMessages);
 // http://localhost:3001/api/messages/all

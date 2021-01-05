@@ -1,6 +1,6 @@
 const Router = require("express").Router();
 const controller = require("../controllers/UserController");
-const { readToken, verifyJwt } = require("../middleware/index");
+const { createToken, readToken, verifyJwt } = require("../middleware/index");
 
 Router.get("/session", readToken, verifyJwt, controller.SessionStatus);
 
@@ -13,7 +13,7 @@ Router.get("/:user_id", controller.GetUserById);
 Router.post("/add", controller.CreateUser);
 // http://localhost:3001/api/users/add
 
-Router.post("/login", controller.Login);
+Router.post("/login", controller.Login, createToken);
 // http://localhost:3001/api/login
 
 Router.put("/update/:user_id", controller.UpdateUser);

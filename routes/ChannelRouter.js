@@ -1,8 +1,5 @@
 const Router = require("express").Router();
 const controller = require("../controllers/ChannelController");
-const { readToken, verifyJwt } = require("../middleware/index");
-
-Router.get("/session", readToken, verifyJwt, controller.SessionStatus);
 
 Router.get("/all", controller.GetChannels);
 // http://localhost:3001/api/channels/all
