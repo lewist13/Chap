@@ -23,7 +23,7 @@ const CreateServer = async (req, res) => {
 const UpdateServer = async (req, res) => {
   try {
     let serverId = parseInt(req.params.server_id);
-    let updatedServer = await Item.update(req.body, {
+    let updatedServer = await Server.update(req.body, {
       where: {
         id: serverId,
       },
