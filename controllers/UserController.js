@@ -31,11 +31,9 @@ const CreateUser = async (req, res) => {
     const { username, email, password } = req.body;
     const passwordDigest = await hashPassword(password);
     const user = await User.create({
-      name,
+      username,
       email,
       passwordDigest,
-      picture,
-      phone,
     });
     console.log(user.id);
     res.send(user);
@@ -54,7 +52,6 @@ const Login = async (req, res) => {
       let payload = {
         id: user.id,
         name: user.name,
-        picture: user.picture,
       };
       console.log(payload);
       let token = createToken(payload);
