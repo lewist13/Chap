@@ -4,8 +4,10 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import __SessionStatus from "../services/index";
 //Components
 import Nav from "./Nav";
+// Pages
+import LandingPage from "../pages/LandingPage";
 
-function Router(props) {
+export default function Router(props) {
   const [username, setUsername] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +17,7 @@ function Router(props) {
   const [pageLoading, setPageLoading] = useState(false);
 
   const verifyTokenValid = async () => {
-    const token = localstorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (token) {
       try {
         const session = await __SessionStatus();
@@ -31,15 +33,15 @@ function Router(props) {
   const toggleAuthenticated = (value, user, currentUser) => {
     setAuthenticated(value);
     setCurrentUser(user);
-    setusername(currentUser);
+    setUsername(currentUser);
   };
 
   const handleLogout = () => {
-    setcurrentUser(null);
+    setCurrentUser(null);
     setEmail("");
     setPassword("");
     setAuthenticated(false);
-    localstorage.clear();
+    localStorage.clear();
   };
 
   useEffect(() => {
@@ -53,7 +55,6 @@ function Router(props) {
         logout={handleLogout}
         currentUser={currentUser}
         authenticated={authenticated}
-        user={user}
       ></Nav>
       {pageLoading ? (
         <h3>...Loading Chap, please wait</h3>

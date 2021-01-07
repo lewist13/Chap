@@ -10,7 +10,7 @@ export const ApiClient = axios.create({
 
 ApiClient.interceptors.request.use(
   async (config) => {
-    const token = localstorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -18,8 +18,6 @@ ApiClient.interceptors.request.use(
   },
   (err) => Promise.reject(err)
 );
-
-import ApiClient from "./ApiClient";
 
 export const __CreateUser = async (formData) => {
   try {
@@ -51,7 +49,7 @@ export const __GetUserById = async (user_id) => {
 export const __Login = async (userData) => {
   try {
     const res = await ApiClient.post("/users/login", userData);
-    localstorage.setItem("token", res.data.token);
+    localStorage.setItem("token", res.data.token);
     return res.data;
   } catch (error) {
     throw error;
@@ -76,7 +74,7 @@ export const __DeleteUser = async (user_id) => {
   }
 };
 
-export const __SessionStatus = async () => {
+const __SessionStatus = async () => {
   try {
     const res = await ApiClient.post("/users/session");
     return res.data;
@@ -84,8 +82,6 @@ export const __SessionStatus = async () => {
     throw error;
   }
 };
-
-import ApiClient from "./ApiClient";
 
 export const __CreateServer = async (formData) => {
   try {
@@ -194,3 +190,5 @@ export const __DeleteMessage = async (message_id) => {
     throw error;
   }
 };
+
+export default __SessionStatus;
