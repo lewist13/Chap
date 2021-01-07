@@ -22,11 +22,11 @@ const CreateMessage = async (req, res) => {
 
 const UpdateMessage = async (req, res) => {
   try {
-    // let messageId = parseInt(req.params.channel_id);
+    let messageId = parseInt(req.params.message_id);
     let updatedMessage = await Message.update(req.body, {
-      //   where: {
-      //     id: channelId,
-      //   },
+      where: {
+        id: messageId,
+      },
       returning: true,
     });
     res.send(updatedMessage);
@@ -38,18 +38,18 @@ const UpdateMessage = async (req, res) => {
 const DeleteMessage = async (req, res) => {
   try {
     await Message.destroy({
-      //   where: {
-      //     id: req.params.channel_id,
-      //   },
+      where: {
+        id: req.params.message_id,
+      },
     });
     res.send({
       message: `Message deleted`,
-      //   data: {
-      //     id: req.params.channel_id,
-      //   },
+      data: {
+        id: req.params.message_id,
+      },
     });
   } catch (error) {
-    // console.log("ID", channel_id);
+    console.log("MESSAGE ID", message_id);
     throw error;
   }
 };
