@@ -37,7 +37,7 @@ export const __Login = async (userData) => {
   }
 };
 
-export const __UpdateUser = async (formData, user_id) => {
+export const __UpdateUser = async (user_id) => {
   try {
     const res = await ApiClient.put(`/users/update/${user_id}`);
     return res.data;
