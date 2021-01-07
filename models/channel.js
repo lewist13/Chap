@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Channels.belongsToMany(models.Users, {
+      Channel.belongsToMany(models.User, {
         as: "d",
         through: models.UserMessagesPub,
         foreignKey: "user_id",

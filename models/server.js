@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE",
       });
 
-      Server.hasMany(models.Channels, {
+      Server.hasMany(models.Channel, {
         foreignKey: "channel_id",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",

@@ -16,7 +16,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api", AppRouter);
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"))
-);
+app.get("/", (req, res) => res.json({ message: "did i do it" }));
 app.listen(PORT, () => console.log(`Server Started On Port: ${PORT}`));
