@@ -1,8 +1,8 @@
-const { User } = require("../models");
+const { User } = require("../models/user");
 const {
+  createToken,
   hashPassword,
   passwordValid,
-  createToken,
 } = require("../middleware/index");
 
 const GetUsers = async (req, res) => {
@@ -23,8 +23,6 @@ const GetUserById = async (req, res) => {
     throw error;
   }
 };
-
-//Update
 
 const CreateUser = async (req, res) => {
   try {

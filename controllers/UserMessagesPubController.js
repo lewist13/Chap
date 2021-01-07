@@ -1,4 +1,4 @@
-const { Message } = require("../models");
+const { Message } = require("../models/usermessagespub");
 const { Op, literal, fn, col } = require("sequelize");
 
 const GetMessages = async (req, res) => {

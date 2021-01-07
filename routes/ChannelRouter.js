@@ -1,10 +1,10 @@
 const Router = require("express").Router();
 const controller = require("../controllers/ChannelController");
 
-Router.get("/all", controller.GetChannels);
+Router.get("/:channel_id", controller.GetChannels);
 // http://localhost:3001/api/channels/all
 
-Router.get("/:channel_id", controller.GetChannelById);
+// Router.get("/:channel_id", controller.GetChannelById);
 // http://localhost:3001/api/channels/1
 
 Router.post("/add", controller.CreateChannel);

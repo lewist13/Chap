@@ -1,4 +1,4 @@
-const { Server } = require("../models");
+const { Server } = require("../models/server");
 const { Op, literal, fn, col } = require("sequelize");
 
 const GetServerById = async (req, res) => {

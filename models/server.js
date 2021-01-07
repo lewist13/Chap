@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       Server.hasMany(models.Channels, {
         foreignKey: "channel_id",
         onUpdate: "CASCADE",
-        onDelete: "DELETE",
+        onDelete: "CASCADE",
       });
     }
   }
