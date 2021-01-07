@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import chapReducer from "./reducers/chapReducer";
+import ChapReducer from "./reducers/ChapReducer";
 
 export const store = createStore(
   combineReducers({
-    chapState: chapReducer,
+    chapState: ChapReducer,
   }),
   applyMiddleware(thunk)
 );
