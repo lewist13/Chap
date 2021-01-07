@@ -1,7 +1,7 @@
 import axios from "axios";
 require("dotenv").config();
 
-const ApiClient = axios.create({
+export const ApiClient = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
       ? `${window.location.origin}/api`
@@ -194,5 +194,3 @@ export const __DeleteMessage = async (message_id) => {
     throw error;
   }
 };
-
-export default ApiClient;
