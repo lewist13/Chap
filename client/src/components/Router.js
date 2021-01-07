@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 // Services
 import __SessionStatus from "../services/index";
 //Components
+import Nav from "./Nav";
 
 function Router(props) {
   const [username, setUsername] = useState({});
