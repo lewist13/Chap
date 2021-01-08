@@ -4,8 +4,10 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import __SessionStatus from "../services/index";
 //Components
 import Nav from "./Nav";
+
 // Pages
 import LandingPage from "../pages/LandingPage";
+import SignUp from "../pages/SignUp";
 
 export default function Router(props) {
   const [username, setUsername] = useState({});
@@ -62,8 +64,18 @@ export default function Router(props) {
         <Switch>
           <Route
             exact
-            path="/signup"
+            path="/"
             component={() => <LandingPage></LandingPage>}
+          ></Route>
+          <Route
+            exact
+            path="/signup"
+            component={(props) => (
+              <SignUp
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              ></SignUp>
+            )}
           ></Route>
         </Switch>
       )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import React, { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { __CreateUser } from "../services/index";
 
 export default function Signup(props) {
@@ -7,24 +7,32 @@ export default function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-
-  const handleInput = (e) => {
+  console.log(props);
+  const handleUsername = (e) => {
     e.preventDefault();
     setUsername(e.target.value);
+  };
+
+  const handleEmail = (e) => {
+    e.preventDefault();
     setEmail(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    e.preventDefault();
     setPassword(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser = {
+    const newCurrentUser = {
       username: username,
       email: email,
       password: password,
     };
-    props.setUser(newUser);
     try {
-      await __CreateUser(newUser);
+      await __CreateUser(newCurrentUser);
+      props.setCurrentUser(newCurrentUser);
       history.push("/login");
     } catch (error) {
       throw error;
@@ -40,21 +48,21 @@ export default function Signup(props) {
             placeholder="Username"
             username="username"
             value={username}
-            onChange={handleInput}
+            onChange={handleUsername}
             type="text"
           ></input>
           <input
             placeholder="Email"
             name="email"
             value={email}
-            onChange={handleInput}
+            onChange={handleEmail}
             type="email"
           ></input>
           <input
             placeholder="Password"
             name="password"
             value={password}
-            onChange={handleInput}
+            onChange={handlePassword}
             type="password"
           ></input>
           <button onClick={handleSubmit}>Sign Up</button>
