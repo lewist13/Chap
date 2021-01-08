@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { __Login } from "../services/index";
 
-export const Login = (props) => {
+export default function Login(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ export const Login = (props) => {
     setPassword(e.target.value);
   };
 
-  loginHandler = async (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
     try {
       const userInfo = {
@@ -68,4 +68,4 @@ export const Login = (props) => {
   ) : (
     <h3>Sorry, you are already signed in :(</h3>
   );
-};
+}

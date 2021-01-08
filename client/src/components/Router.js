@@ -8,6 +8,7 @@ import Nav from "./Nav";
 // Pages
 import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
+import SignIn from "../pages/SignIn";
 
 export default function Router(props) {
   const [username, setUsername] = useState({});
@@ -75,6 +76,22 @@ export default function Router(props) {
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               ></SignUp>
+            )}
+          ></Route>
+          <Route
+            path="/login"
+            component={(props) => (
+              <SignIn
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                username={username}
+                email={email}
+                password={password}
+                toggleAuthenticated={toggleAuthenticated}
+                setAuthenticated={setAuthenticated}
+                history={history}
+                {...props}
+              ></SignIn>
             )}
           ></Route>
         </Switch>
