@@ -9,6 +9,7 @@ import Nav from "./Nav";
 import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
+import Server from "../pages/Server";
 
 export default function Router(props) {
   const [username, setUsername] = useState({});
@@ -93,6 +94,11 @@ export default function Router(props) {
                 {...props}
               ></SignIn>
             )}
+          ></Route>
+          <Route
+            exact
+            path="/servers/:server_id"
+            component={() => <Server></Server>}
           ></Route>
         </Switch>
       )}

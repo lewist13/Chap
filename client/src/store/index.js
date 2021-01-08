@@ -1,10 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import ChapReducer from "./reducers/ChapReducer";
+import ServerReducer from "./reducers/ServerReducer";
+import ChannelReducer from "./reducers/ChannelReducer";
 
-export const store = createStore(
+const store = createStore(
   combineReducers({
-    chapState: ChapReducer,
+    serverState: ServerReducer,
+    channelState: ChannelReducer,
   }),
   applyMiddleware(thunk)
 );
+
+export default store;

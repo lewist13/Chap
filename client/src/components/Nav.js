@@ -20,7 +20,7 @@ export default function Nav({ authenticated, currentUser, logout }) {
     <div>
       <nav>
         <ul>
-          <Link to="/"></Link>
+          <Link to="/servers/add">Create Server</Link>
           <Link to="/" onClick={(e) => logout(e)}>
             <li>Logout</li>
           </Link>

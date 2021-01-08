@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { __Login } from "../services/index";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
@@ -38,34 +40,75 @@ export default function Login(props) {
     }
   };
   return !props.authenticated && !props.currentUser ? (
-    <div>
-      <form>
-        <h3>Sign In</h3>
-        <input
-          placeholder="Username"
-          name="username"
-          value={username}
-          onChange={usernameInput}
-          type="username"
-        ></input>
-        <input
-          placeholder="Email"
-          name="email"
-          value={email}
-          onChange={emailInput}
-          type="email"
-        ></input>
-        <input
-          placeholder="Password"
-          name="password"
-          value={password}
-          onChange={passwordInput}
-          type="password"
-        ></input>
-        <button onClick={loginHandler}>Login</button>
-      </form>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <form>
+          <h3>Sign In</h3>
+          <input
+            placeholder="Username"
+            name="username"
+            value={username}
+            onChange={usernameInput}
+            type="username"
+          ></input>
+          <input
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={emailInput}
+            type="email"
+          ></input>
+          <input
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={passwordInput}
+            type="password"
+          ></input>
+          <button onClick={loginHandler}>Login</button>
+        </form>
+      </div>
+    </ThemeProvider>
   ) : (
     <h3>Sorry, you are already signed in :(</h3>
   );
 }
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: "14px",
+        backgroundColor: "black",
+      },
+    },
+    MuiSnackbarContent: {
+      root: {
+        backgroundColor: "#202225",
+        color: "white",
+      },
+    },
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: "#36393E",
+        position: "absolute",
+      },
+    },
+  },
+  palette: {
+    type: "dark",
+    primary: {
+      main: "#7289da",
+    },
+    secondary: {
+      main: "#3ca374",
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 14,
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+  },
+});
