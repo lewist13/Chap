@@ -7,7 +7,6 @@ export default function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  console.log(props);
   const handleUsername = (e) => {
     e.preventDefault();
     setUsername(e.target.value);
