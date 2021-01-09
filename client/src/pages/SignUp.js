@@ -9,6 +9,7 @@ export default function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+
   const handleUsername = (e) => {
     e.preventDefault();
     setUsername(e.target.value);
@@ -44,7 +45,6 @@ export default function Signup(props) {
       <div>
         <form onSubmit={handleSubmit}>
           <h3>Sign Up</h3>
-
           <div>
             <input
               placeholder="Username"

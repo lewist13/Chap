@@ -46,7 +46,7 @@ export default function Login(props) {
           name="username"
           value={username}
           onChange={usernameInput}
-          type="username"
+          type="text"
         ></input>
         <input
           placeholder="Email"

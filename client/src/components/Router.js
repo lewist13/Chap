@@ -98,7 +98,7 @@ export default function Router(props) {
           <Route
             exact
             path="/servers/:server_id"
-            component={() => <Server></Server>}
+            component={() => <Server />}
           ></Route>
         </Switch>
       )}
