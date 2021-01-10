@@ -1,9 +1,15 @@
 import react from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { getChannel, getMessage } from "../store/actions/ChannelActions";
 
 const state = ({ serverState }) => serverState;
 
-const actions = (dispatch) => ({});
+const actions = (dispatch) => {
+  return {
+    fetchChannel: (channel_id) => dispatch(getChannel(channel_id)),
+  };
+};
 
 const Channels = (props) => {
   console.log(props);
