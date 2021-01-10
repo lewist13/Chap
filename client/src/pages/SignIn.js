@@ -1,7 +1,19 @@
 import React, { useState } from "react";
 import { __Login } from "../services/index";
+import { LoginUser } from "../store/actions/UserActions";
+import { connect } from "react-redux";
 
-export default function Login(props) {
+const state = ({}) => {
+  return {};
+};
+
+const actions = (dispatch) => {
+  return {
+    loginUser: (formData) => dispatch(LoginUser(formData)),
+  };
+};
+
+function SignIn(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,11 +39,11 @@ export default function Login(props) {
         email: email,
         password: password,
       };
-      const signIn = await __Login(userInfo);
-      props.toggleAuthenticated(true, signIn.user.id);
-      props.setAuthenticated(true);
-      props.setCurrentUser(signIn.user);
-      props.history.push(`/users/${signIn.user.id}`);
+      const signIn = props.loginUser(userInfo);
+      // props.toggleAuthenticated(true, signIn.user.id);
+      // props.setAuthenticated(true);
+      // props.setCurrentUser(signIn.user);
+      props.history.push(`/servers`);
     } catch (error) {
       console.log(error);
       throw error;
@@ -69,3 +81,5 @@ export default function Login(props) {
     <h3>Sorry, you are already signed in :(</h3>
   );
 }
+
+export default connect(state, actions)(SignIn);

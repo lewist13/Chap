@@ -10,8 +10,9 @@ import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Server from "../pages/Server";
+import Channels from "../pages/Channels";
 
-export default function Router(props) {
+export default () => {
   const [username, setUsername] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,11 +65,7 @@ export default function Router(props) {
         <h3>...Loading Chap, please wait</h3>
       ) : (
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => <LandingPage></LandingPage>}
-          ></Route>
+          <Route exact path="/" component={() => <LandingPage></LandingPage>} />
           <Route
             exact
             path="/signup"
@@ -95,13 +92,14 @@ export default function Router(props) {
               ></SignIn>
             )}
           ></Route>
+          <Route exact path="/servers" component={Server}></Route>
           <Route
             exact
-            path="/servers/:server_id"
-            component={() => <Server />}
-          ></Route>
+            path="/servers/:server_id/channels"
+            component={Channels}
+          />
         </Switch>
       )}
     </div>
   );
-}
+};

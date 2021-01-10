@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      UserMessagesPub.belongsTo(models.User, { foreignKey: "user_id" });
+      UserMessagesPub.belongsTo(models.Channel, { foreignKey: "channel_id" });
     }
   }
   UserMessagesPub.init(
@@ -20,6 +22,11 @@ module.exports = (sequelize, DataTypes) => {
           model: "channel",
           key: "id",
         },
+      },
+      messageBody: {
+        field: "message_body",
+        type: DataTypes.TEXT,
+        allowNull: false,
       },
       user_id: {
         type: DataTypes.INTEGER,

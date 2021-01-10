@@ -10,20 +10,20 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.belongsToMany(models.Server, {
-        as: "a",
+        as: "servers",
         through: models.UserServer,
-        foreignKey: "owner_id",
+        foreignKey: "user_id",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       });
-
-      User.belongsToMany(models.Channel, {
-        as: "c",
-        through: models.UserMessagesPub,
-        foreignKey: "",
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      });
+      User.hasMany(models.UserMessagesPub, { foreignKey: "user_id" });
+      // User.belongsToMany(models.Channel, {
+      //   as: "c",
+      //   through: models.UserMessagesPub,
+      //   foreignKey: "",
+      //   onUpdate: "CASCADE",
+      //   onDelete: "CASCADE",
+      // });
     }
   }
   User.init(

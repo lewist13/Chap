@@ -10,6 +10,7 @@ import {
   UPDATE_SERVER,
   DELETE_SERVER,
   GET_CHANNELS,
+  SET_SERVER,
 } from "../types";
 
 export const createServer = (formData) => async (dispatch) => {
@@ -60,6 +61,11 @@ export const deleteServer = (server_id) => async (dispatch) => {
     throw error;
   }
 };
+
+export const SetServer = (server) => ({
+  type: SET_SERVER,
+  payload: server,
+});
 
 // export const getChannels = () => async (dispatch) => {
 //   try {

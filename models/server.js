@@ -12,13 +12,13 @@ module.exports = (sequelize, DataTypes) => {
       Server.belongsToMany(models.User, {
         as: "b",
         through: models.UserServer,
-        foreignKey: "owner_id",
+        foreignKey: "user_id",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       });
 
       Server.hasMany(models.Channel, {
-        foreignKey: "channel_id",
+        foreignKey: "server_id",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       });

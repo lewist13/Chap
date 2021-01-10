@@ -1,7 +1,7 @@
 const Router = require("express").Router();
 const controller = require("../controllers/UserMessagesPubController");
 
-Router.get("/all", controller.GetMessages);
+Router.get("/all/:channel_id", controller.GetMessages);
 // http://localhost:3001/api/messages/all
 
 Router.post("/add", controller.CreateMessage);

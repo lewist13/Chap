@@ -1,10 +1,10 @@
-const { Message } = require("../models/usermessagespub");
+const { UserMessagesPub } = require("../models");
 const { Op, literal, fn, col } = require("sequelize");
 
 const GetMessages = async (req, res) => {
   try {
-    let id = parseInt(req.params.message_id);
-    let message = await Message.findAll({ where: { message_id: id } });
+    let id = parseInt(req.params.channel_id);
+    let message = await UserMessagesPub.findAll({ where: { channel_id: id } });
     res.send(message);
   } catch (error) {
     throw error;
@@ -13,7 +13,7 @@ const GetMessages = async (req, res) => {
 
 const CreateMessage = async (req, res) => {
   try {
-    const message = await Message.create(req.body);
+    const message = await UserMessagesPub.create(req.body);
     res.send(message);
   } catch (error) {
     throw error;
@@ -23,7 +23,7 @@ const CreateMessage = async (req, res) => {
 const UpdateMessage = async (req, res) => {
   try {
     let messageId = parseInt(req.params.message_id);
-    let updatedMessage = await Message.update(req.body, {
+    let updatedMessage = await UserMessagesPub.update(req.body, {
       where: {
         id: messageId,
       },
@@ -37,7 +37,7 @@ const UpdateMessage = async (req, res) => {
 
 const DeleteMessage = async (req, res) => {
   try {
-    await Message.destroy({
+    await UserMessagesPub.destroy({
       where: {
         id: req.params.message_id,
       },

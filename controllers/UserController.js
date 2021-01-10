@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Server, Channel, UserMessagesPub } = require("../models");
 const {
   createToken,
   hashPassword,
@@ -44,17 +44,24 @@ const Login = async (req, res) => {
   try {
     const user = await User.findOne({
       where: { email: req.body.email },
-      raw: true,
+      include: [
+        {
+          model: Server,
+          as: "servers",
+          include: [{ model: Channel }],
+        },
+      ],
     });
-    if (user && (await passwordValid(req.body.password, user.passwordDigest))) {
+    if (
+      user &&
+      (await passwordValid(req.body.password, user.dataValues.passwordDigest))
+    ) {
       let payload = {
-        id: user.id,
-        name: user.name,
+        id: user.dataValues.id,
+        name: user.dataValues.username,
       };
-      console.log(payload);
       let token = createToken(payload);
-      console.log(user, token);
-      return res.send({ user, token });
+      return res.send({ user });
     }
   } catch (error) {
     throw error;

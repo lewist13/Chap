@@ -16,6 +16,11 @@ module.exports = {
           key: "id",
         },
       },
+      messageBody: {
+        type: Sequelize.TEXT,
+        field: "message_body",
+        allowNull: false,
+      },
       user_id: {
         type: Sequelize.INTEGER,
         field: "user_id",

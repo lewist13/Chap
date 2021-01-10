@@ -2,8 +2,9 @@ import React from "react";
 // import { Link } from "react-router-dom";
 // import SignUp from "./SignUp";
 import Server from "./Server";
+import "../styles/App.css";
 
-export default function LandingPage({ authenticated, currentUser, logout }) {
+export default function ({ authenticated, currentUser, logout }) {
   return !authenticated && !currentUser ? (
     <div className="lpbody">
       <div className="signuplogin">
@@ -22,8 +23,6 @@ export default function LandingPage({ authenticated, currentUser, logout }) {
       </div>
     </div>
   ) : (
-    <div>
-      <Server />
-    </div>
+    <div>{/* <Server /> */}</div>
   );
 }

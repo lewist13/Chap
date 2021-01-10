@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css";
 import Img from "../assets/dropdown3.png";
+import "../styles/Nav.css";
 
-export default function Nav({ authenticated, currentUser, logout }) {
+export default function ({ authenticated, currentUser, logout }) {
   return !authenticated && !currentUser ? (
     <div></div>
   ) : (

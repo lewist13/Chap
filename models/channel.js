@@ -9,13 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Channel.belongsToMany(models.User, {
-        as: "d",
-        through: models.UserMessagesPub,
-        foreignKey: "user_id",
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      });
+      // Channel.belongsToMany(models.User, {
+      //   as: "d",
+      //   through: models.UserMessagesPub,
+      //   foreignKey: "user_id",
+      //   onUpdate: "CASCADE",
+      //   onDelete: "CASCADE",
+      // });
+      Channel.hasMany(models.UserMessagesPub, { foreignKey: "channel_id" });
+      Channel.belongsTo(models.Server, { foreignKey: "server_id" });
     }
   }
   Channel.init(
