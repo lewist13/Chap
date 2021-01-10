@@ -14,6 +14,7 @@ const GetServerById = async (req, res) => {
 const CreateServer = async (req, res) => {
   try {
     const server = await Server.create(req.body);
+    console.log(server);
     res.send(server);
   } catch (error) {
     throw error;
