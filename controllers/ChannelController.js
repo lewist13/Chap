@@ -4,7 +4,14 @@ const { Op, literal, fn, col } = require("sequelize");
 const GetChannels = async (req, res) => {
   try {
     let id = parseInt(req.params.channel_id);
-    let channel = await Channel.findAll({ where: { channel_id: id } });
+    let channel = await Channel.findAll({
+      where: {
+        channel_id: id,
+        where: {
+          message_id: id,
+        },
+      },
+    });
     // hit endpoint for messages when channel is selected
     res.send(channel);
   } catch (error) {
