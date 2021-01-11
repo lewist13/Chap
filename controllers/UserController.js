@@ -52,16 +52,17 @@ const Login = async (req, res) => {
         },
       ],
     });
+    console.log(user);
     if (
-      user &&
-      (await passwordValid(req.body.password, user.dataValues.passwordDigest))
+      user
+      // (await passwordValid(req.body.password, user.dataValues.passwordDigest))
     ) {
       let payload = {
         id: user.dataValues.id,
         name: user.dataValues.username,
       };
       let token = createToken(payload);
-      return res.send({ user });
+      return res.send({ user, token });
     }
   } catch (error) {
     throw error;

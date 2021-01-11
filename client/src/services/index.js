@@ -49,7 +49,7 @@ export const __GetUserById = async (user_id) => {
 export const __Login = async (userData) => {
   try {
     const res = await ApiClient.post("/users/login", userData);
-    localStorage.setItem("token", res.data.token);
+    // localStorage.setItem("token", res.data.token);
     return res.data;
   } catch (error) {
     throw error;

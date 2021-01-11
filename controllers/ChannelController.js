@@ -1,4 +1,4 @@
-const { Channel } = require("../models/channel");
+const { Channel } = require("../models");
 const { Op, literal, fn, col } = require("sequelize");
 
 const GetChannels = async (req, res) => {

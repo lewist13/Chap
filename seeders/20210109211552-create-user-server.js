@@ -5,7 +5,7 @@ module.exports = {
     const servers = await Server.findAll({ raw: true });
 
     const userServers = servers.map(({ id }) => ({
-      user_id: 5,
+      user_id: 1,
       server_id: id,
       createdAt: new Date(),
       updatedAt: new Date(),

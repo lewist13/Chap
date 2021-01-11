@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const userPubMessages = [...Array(100)].map((_, i) => ({
-      user_id: 5,
+      user_id: 1,
       channel_id: 1,
       message_body: `Message-${i + 1}`,
       createdAt: new Date(),

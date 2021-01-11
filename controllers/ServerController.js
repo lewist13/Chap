@@ -1,10 +1,17 @@
-const { Server } = require("../models/server");
+const { Server, Channel } = require("../models");
 const { Op, literal, fn, col } = require("sequelize");
 
 const GetServerById = async (req, res) => {
   try {
     let id = parseInt(req.params.server_id);
-    let server = await Server.findAll({ where: { server_id: id } });
+    let server = await Server.findAll({
+      where: { id: id },
+      include: [
+        {
+          model: Channel,
+        },
+      ],
+    });
     res.send(server);
   } catch (error) {
     throw error;

@@ -31,7 +31,7 @@ function SignIn(props) {
     setPassword(e.target.value);
   };
 
-  const loginHandler = async (e) => {
+  const loginHandler = (e) => {
     e.preventDefault();
     try {
       const userInfo = {
@@ -78,7 +78,7 @@ function SignIn(props) {
       </form>
     </div>
   ) : (
-    <h3>Sorry, you are already signed in :(</h3>
+    <h3>Sorry, you are already signed in</h3>
   );
 }
 

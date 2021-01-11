@@ -24,7 +24,7 @@ const Server = (props) => {
   //   props.fetchServer(props.match.params.id);
   // }, [props.serverState]);
   // console.log(props);
-  console.log(props);
+  // console.log(props);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -35,6 +35,7 @@ const Server = (props) => {
     }
     props.history.push("/users/profile");
   };
+  console.log(props.serverState.servers);
   return (
     <div>
       {props.serverState.servers

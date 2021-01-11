@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   getChannel,
   getMessage,
@@ -16,20 +16,31 @@ const actions = (dispatch) => {
     setChannel: (channel) => dispatch(SetChannel(channel)),
   };
 };
+// useEffect to channels, react router props to get server id
 
 const Channel = (props) => {
-  console.log(props);
+  useEffect(() => {
+    const { server_id } = props.match.params;
+    console.log(props);
+  }, [props.channelState]);
+
   return (
-    <h1>Loading</h1>
-    // <div>
-    //   {props.channelState.channels ? (
-    //     props.channelState.channels.map((channel) => (
-    //       <li key={channel.id}>{channel.channel}</li>
-    //     ))
-    //   ) : (
-    //     <h3>Loading</h3>
-    //   )}
-    // </div>
+    <div>
+      {props.channels ? (
+        props.channels.map((channels) => (
+          <ul key={channels.id}>
+            <Link
+              to={`/channels/${channels.id}`}
+              onClick={() => props.setChannel(channels)}
+            >
+              {channels.channel}
+            </Link>
+          </ul>
+        ))
+      ) : (
+        <h3>Loading</h3>
+      )}
+    </div>
   );
 };
 

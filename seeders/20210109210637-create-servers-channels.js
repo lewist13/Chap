@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const servers = [...Array(5)].map((_, i) => ({
       server: `Server-${i}`,
-      owner_id: 5,
+      owner_id: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
     }));

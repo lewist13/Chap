@@ -96,17 +96,7 @@ export default () => {
           <Route
             exact
             path="/servers/:server_id/channels"
-            component={Channel}
-          />
-          <Route
-            exact
-            path="/servers/:server_id/channels"
-            component={Channel}
-          ></Route>
-          <Route
-            exact
-            path="/servers/:server_id/channels/messages"
-            component={Channel}
+            component={(props) => <Channel {...props}> </Channel>}
           />
         </Switch>
       )}
