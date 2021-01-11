@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       //   onUpdate: "CASCADE",
       //   onDelete: "CASCADE",
       // });
-      Channel.hasMany(models.UserMessagesPub, { foreignKey: "channel_id" });
+      // Channel.hasMany(models.UserMessagesPub, { foreignKey: "channel_id" });
       Channel.belongsTo(models.Server, { foreignKey: "server_id" });
     }
   }

@@ -16,32 +16,30 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       });
-
       Server.hasMany(models.UserMessagesPub, {
         foreignKey: "server_id",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       });
-
-      Server.init(
-        {
-          server: DataTypes.STRING,
-          ownerId: {
-            type: DataTypes.INTEGER,
-            field: "owner_id",
-            references: {
-              model: "users",
-              key: "id",
-            },
-          },
-        },
-        {
-          sequelize,
-          modelName: "Server",
-          tableName: "servers",
-        }
-      );
-      return Server;
     }
   }
+  Server.init(
+    {
+      server: DataTypes.STRING,
+      ownerId: {
+        type: DataTypes.INTEGER,
+        field: "owner_id",
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "Server",
+      tableName: "servers",
+    }
+  );
+  return Server;
 };

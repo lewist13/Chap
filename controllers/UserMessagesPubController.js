@@ -3,8 +3,8 @@ const { Op, literal, fn, col } = require("sequelize");
 
 const GetMessages = async (req, res) => {
   try {
-    let id = parseInt(req.params.channel_id);
-    let message = await UserMessagesPub.findAll({ where: { channel_id: id } });
+    let id = parseInt(req.params.server_id);
+    let message = await UserMessagesPub.findAll({ where: { server_id: id } });
     res.send(message);
   } catch (error) {
     throw error;

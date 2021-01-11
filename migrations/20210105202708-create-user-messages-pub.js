@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      channel_id: {
+      server_id: {
         type: Sequelize.INTEGER,
-        field: "channel_id",
+        field: "server_id",
         references: {
-          model: "channels",
+          model: "servers",
           key: "id",
         },
       },

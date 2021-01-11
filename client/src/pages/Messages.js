@@ -18,14 +18,20 @@ const actions = (dispatch) => {
 // useEffect to channels, react router props to get server id
 
 const Message = (props) => {
+  
+  
+  const mappingServ = props.servers ? props.servers.map((serv) => {
+    console.log(serv);
+  })
   // useEffect(() => {
   //   props.servers.Channels = props.match.params;
   // }, [props.channelState]);
   // console.log(props.servers[0].Channels[0]);
+  // console.log(props);
   return (
     <div>
-      {props.servers ? (
-        props.servers.messages.map((message) => (
+      {props.messages ? (
+        props.servers.UserMessagesPub.map((message) => (
           <ul key={message.id}>
             <Link
               to={`/messages/${message.id}`}

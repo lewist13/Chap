@@ -55,7 +55,7 @@ const Server = (props) => {
               <Link key={servers.id} to={`/servers/${servers.id}/messages`}>
                 {servers.server}
               </Link>
-              <Messages servers={servers}></Messages>
+              <Messages props={props} servers={servers}></Messages>
             </ul>
           ))
         : null}

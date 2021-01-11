@@ -11,16 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserMessagesPub.belongsTo(models.User, { foreignKey: "user_id" });
       // UserMessagesPub.belongsTo(models.Channel, { foreignKey: "channel_id" });
-      UserMessagesPub.belongsTo(models.Server, { foreignKey: "channel_id" });
+      UserMessagesPub.belongsTo(models.Server, { foreignKey: "server_id" });
     }
   }
   UserMessagesPub.init(
     {
-      channel_id: {
+      server_id: {
         type: DataTypes.INTEGER,
-        field: "channel_id",
+        field: "server_id",
         references: {
-          model: "channel",
+          model: "servers",
           key: "id",
         },
       },
