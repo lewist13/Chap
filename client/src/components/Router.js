@@ -10,7 +10,7 @@ import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Server from "../pages/Server";
-import Channel from "../pages/Channels";
+import Messages from "../pages/Messages";
 
 export default () => {
   const [username, setUsername] = useState({});
@@ -95,8 +95,8 @@ export default () => {
           <Route exact path="/servers" component={Server}></Route>
           <Route
             exact
-            path="/servers/:server_id/channels"
-            component={(props) => <Channel {...props}> </Channel>}
+            path="/servers/:server_id/messages"
+            component={(props) => <Messages {...props}> </Messages>}
           />
         </Switch>
       )}

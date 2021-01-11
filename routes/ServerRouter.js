@@ -5,6 +5,8 @@ const controller = require("../controllers/ServerController");
 Router.get("/:server_id/", controller.GetServerById);
 // http://localhost:3001/api/servers/1
 
+Router.get("/:server_id/channels", controller.GetChannelsByServerId);
+
 Router.post("/add", controller.CreateServer);
 // http://localhost:3001/api/servers/add
 

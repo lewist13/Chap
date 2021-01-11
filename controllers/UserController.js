@@ -48,7 +48,7 @@ const Login = async (req, res) => {
         {
           model: Server,
           as: "servers",
-          include: [{ model: Channel }],
+          include: [{ model: UserMessagesPub }],
         },
       ],
     });

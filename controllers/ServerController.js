@@ -1,4 +1,4 @@
-const { Server, Channel } = require("../models");
+const { Server, Channel, UserMessagesPub } = require("../models");
 const { Op, literal, fn, col } = require("sequelize");
 
 const GetServerById = async (req, res) => {
@@ -9,10 +9,21 @@ const GetServerById = async (req, res) => {
       include: [
         {
           model: Channel,
+          model: UserMessagesPub,
         },
       ],
     });
     res.send(server);
+  } catch (error) {
+    throw error;
+  }
+};
+
+const GetChannelsByServerId = async (req, res) => {
+  try {
+    let id = parseInt(req.params.server_id);
+    let channels = await Server.findAll({ where: { id: id } });
+    res.send(channels);
   } catch (error) {
     throw error;
   }
@@ -67,4 +78,5 @@ module.exports = {
   UpdateServer,
   GetServerById,
   CreateServer,
+  GetChannelsByServerId,
 };

@@ -7,3 +7,4 @@ export const GET_MESSAGES = "GET_MESSAGES";
 export const GET_SERVERS = "GET_SERVERS";
 export const SET_SERVER = "SET_SERVER";
 export const SET_CHANNEL = "SET_CHANNEL";
+export const SET_MESSAGE = "SET_MESSAGE";

@@ -137,6 +137,15 @@ export const __GetChannels = async (channel_id) => {
   }
 };
 
+export const __GetChannelsByServerId = async (server_id) => {
+  try {
+    const res = await ApiClient.get(`/${server_id}/channels`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const __UpdateChannel = async (channel_id) => {
   try {
     const res = await ApiClient.put(`/channels/udpate/${channel_id}`);

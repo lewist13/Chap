@@ -6,6 +6,16 @@ import {
 } from "../store/actions/ServerActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Channels from "./Channels";
+import Messages from "./Messages";
+
+// const [channels, setChannels] = useState([])
+// const [servers, setServers] = useState([])
+
+// const getChannelsByServer = (server_id) => {
+//   let channels = server_id
+//   return channels
+// }
 
 const actions = (dispatch) => {
   return {
@@ -22,7 +32,7 @@ const state = ({ serverState }) => {
 const Server = (props) => {
   // useEffect(() => {
   //   props.fetchServer(props.match.params.id);
-  // }, [props.serverState]);
+  // }, []);
   // console.log(props);
   // console.log(props);
 
@@ -35,18 +45,17 @@ const Server = (props) => {
     }
     props.history.push("/users/profile");
   };
-  console.log(props.serverState.servers);
+  // console.log(props.serverState.servers[0].Channels[0]);
+  console.log(props);
   return (
     <div>
       {props.serverState.servers
         ? props.serverState.servers.map((servers) => (
-            <ul key={servers.id}>
-              <Link
-                to={`/servers/${servers.id}/channels`}
-                onClick={() => props.setServer(servers)}
-              >
+            <ul>
+              <Link key={servers.id} to={`/servers/${servers.id}/messages`}>
                 {servers.server}
               </Link>
+              <Messages servers={servers}></Messages>
             </ul>
           ))
         : null}

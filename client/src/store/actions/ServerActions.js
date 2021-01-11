@@ -20,7 +20,9 @@ export const createServer = (formData) => async (dispatch) => {
       tpye: CREATE_SERVER,
       payload: server,
     });
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getServer = (server_id) => async (dispatch) => {
