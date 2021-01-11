@@ -1,8 +1,8 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 // import SignUp from "./SignUp";
-import Server from "./Server";
-import "../styles/App.css";
+// import Server from "./Server";
+import "../styles/LandingPage.css";
 
 export default function ({ authenticated, currentUser, logout }) {
   return !authenticated && !currentUser ? (

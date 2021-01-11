@@ -39,6 +39,7 @@ export default () => {
     setAuthenticated(value);
     setCurrentUser(user);
     setUsername(currentUser);
+    verifyTokenValid();
   };
 
   const handleLogout = () => {

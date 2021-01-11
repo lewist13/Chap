@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   getServer,
   deleteServer,
@@ -6,8 +6,9 @@ import {
 } from "../store/actions/ServerActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Channels from "./Channels";
-import Messages from "./Messages";
+import "../styles/Server.css";
+// import Channels from "./Channels";
+// import Messages from "./Messages";
 
 // const [channels, setChannels] = useState([])
 // const [servers, setServers] = useState([])
@@ -52,10 +53,11 @@ const Server = (props) => {
       {props.serverState.servers
         ? props.serverState.servers.map((servers) => (
             <ul>
-              <Link key={servers.id} to={`/servers/${servers.id}/messages`}>
-                {servers.server}
+              <Link to={`/servers/${servers.id}/messages`}>
+                <h4 className="servername">
+                  <li key={servers.id}>{servers.server}</li>
+                </h4>
               </Link>
-              <Messages props={props} servers={servers}></Messages>
             </ul>
           ))
         : null}

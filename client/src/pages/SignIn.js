@@ -51,7 +51,7 @@ function SignIn(props) {
   };
   return !props.authenticated && !props.currentUser ? (
     <div>
-      <form>
+      <form className="signin">
         <h3>Sign In</h3>
         <input
           placeholder="Username"
